@@ -1,0 +1,15 @@
+[project]
+name = "mambo-md"
+version = "0.1.0"
+description = "MAMBO drone metadata"
+requires-python = ">=3.9"
+dependencies = [
+    "rasterio",
+    "geopandas",
+    "shapely",
+    "fiona",
+    "s3fs",
+    "pystac",
+    "python-dotenv",
+]
+
