@@ -8,7 +8,9 @@ logging.basicConfig(level=logging.INFO)
 
 
 def vector_bbox_and_footprint(url):
-    """Read properties from a Geodataframe view"""
+    """Read properties from a Geodataframe view.
+    Should work for parquet, file geodatabase, shapefiles, etc
+    """
     bbox = footprint = None
     try:
         with gpd.read_file(url) as src:
@@ -23,7 +25,9 @@ def vector_bbox_and_footprint(url):
 
 
 def shp_timestamp(url):
-    """With luck, we can read a last update data from DBF metadata"""
+    """With luck, we can read a last update data from DBF metadata
+    Reads anything that GDAL (via fiona) can read
+    """
     dt = None
     with fiona.open(url) as src:
         tags = src.tags()
