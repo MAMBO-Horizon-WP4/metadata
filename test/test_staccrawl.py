@@ -1,5 +1,5 @@
 import pystac
-from staccrawl import catalog, stac_item
+from staccrawl.catalog import catalog, stac_item
 
 
 def test_catalog():

@@ -4,8 +4,8 @@ import rasterio
 import pystac
 
 from datetime import datetime
-from shapely.geometry import Polygon, mapping
 from dotenv import load_dotenv
+from staccrawl.raster import raster_bbox_and_footprint
 
 logging.basicConfig(level=logging.INFO)
 
@@ -22,29 +22,6 @@ def catalog():
         id="mambo-drone-shrubs",
         description="Demonstration for MAMBO WP4 data access from s3.",
     )
-
-
-def raster_bbox_and_footprint(raster):
-    """Accept an s3 URL and read metadata"""
-    bbox = footprint = None
-    try:
-        with rasterio.open(raster) as r:
-            bounds = r.bounds
-            bbox = [bounds.left, bounds.bottom, bounds.right, bounds.top]
-            footprint = Polygon(
-                [
-                    [bounds.left, bounds.bottom],
-                    [bounds.left, bounds.top],
-                    [bounds.right, bounds.top],
-                    [bounds.right, bounds.bottom],
-                ]
-            )
-    except rasterio.errors.RasterioIOError as err:
-        logging.error(err)
-
-    if footprint:
-        footprint = mapping(footprint)
-    return (bbox, footprint)
 
 
 def stac_item(url, catalog, default_date=datetime(2024, 8, 18)):
