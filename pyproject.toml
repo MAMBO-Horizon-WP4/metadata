@@ -10,6 +10,7 @@ dependencies = [
     "fiona",
     "s3fs",
     "pystac",
+    "pytest",
     "python-dotenv",
 ]
 
