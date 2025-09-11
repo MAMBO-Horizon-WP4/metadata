@@ -1,5 +1,5 @@
 [project]
-name = "mambo-md"
+name = "staccrawl"
 version = "0.1.0"
 description = "MAMBO drone metadata"
 requires-python = ">=3.9"
